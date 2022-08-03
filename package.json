@@ -1,0 +1,25 @@
+{
+  "name": "cumaps",
+  "version": "1.0.0",
+  "description": "- [Design](#design)\r - [Description](#desc)\r - [Features](#features)\r - [User Journey](#Journey)\r - [User stories](#stories)\r - [Live link](#live)\r - [Installation](#install)\r - [Team members](#Mai&Hosam)",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CA-G12/CUMaps.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/CA-G12/CUMaps/issues"
+  },
+  "homepage": "https://github.com/CA-G12/CUMaps#readme",
+  "dependencies": {
+    "jest": "^28.1.3"
+  }
+}
