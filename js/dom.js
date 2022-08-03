@@ -17,8 +17,7 @@ unForm.addEventListener('submit',(e)=>{
     let info=searchUniversty(data,input.value)
     inuDom(info)
 })
-  data.forEach((ele) => {
-    // console.log(ele);
+data.forEach((ele) => {
     const cardContent = document.createElement("div");
     cardContent.className = "card-content";
     cardUniversity.appendChild(cardContent);
@@ -54,7 +53,6 @@ unForm.addEventListener('submit',(e)=>{
 };
 const createCard = (data) => {
   data.forEach((ele) => {
-    // console.log(ele)
     const card = document.createElement("div");
     card.className = "card-content";
     cardSection?.appendChild(card);
@@ -78,8 +76,6 @@ const createCard = (data) => {
     cardFooter.appendChild(anchor);
 
     anchor.addEventListener("click", (e) => {
-      // e.preventDefault()
-      console.log("222");
       anchor.href += `?q=${title.textContent}`;
     });
     const i = document.createElement("i");
