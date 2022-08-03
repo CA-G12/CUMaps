@@ -7,7 +7,7 @@ const fetch=(url,cb)=>{
                 const data=JSON.parse(xhr.responseText)
                 cb(data)    
             }else{
-                console.log(error,)
+                console.log('error')
             }
         }
     }

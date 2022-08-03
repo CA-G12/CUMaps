@@ -2,10 +2,9 @@
 const navLink = document.querySelectorAll('.nav-link')
 const navMenu = document.getElementById('nav-menu')
 navLink.forEach (n => n.addEventListener ('click', linkAction))
-const cardSection=document.querySelector('.card-section')
-console.log(cardSection)
+const cardSection=document.querySelector('.card-countries')
+
 const createCard=(data)=>{
-    console.log(data)
     data.forEach(ele=>{
 
         const card =document.createElement('section')
