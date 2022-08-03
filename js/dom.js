@@ -6,7 +6,7 @@ const cardSection=document.querySelector('.card-countries')
 
 const createCard=(data)=>{
     data.forEach(ele=>{
-
+        console.log(ele)
         const card =document.createElement('section')
         card.className='card-content'
         cardSection.appendChild(card)
@@ -22,7 +22,7 @@ const createCard=(data)=>{
         card.appendChild(cardFooter)
         const title=document.createElement('h2')
         title.className='card-name'
-        title.textContent=ele.altSpellings[1]
+        title.textContent=ele.name.common
         cardFooter.appendChild(title)
         const anchor=document.createElement('a')
         anchor.className='button card-button'
