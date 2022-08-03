@@ -217,3 +217,47 @@ img{
 .scroll-header{
     box-shadow: 0 2px 4px rgba(0,0,0,.1);
 }
+
+/* ================ home section in header page ================ */
+.home-container {
+    max-width: 960px;
+    width: calc(100% - 2rem);
+    margin-left: var(--mb-2);
+    margin-right: var(--mb-2);
+    display: grid;
+    gap: 1.5rem;
+    height: calc(100vh - var(--header-height));
+    align-content: center;
+}
+
+.home-title {
+    font-size: var(--biggest-font-size);
+    color: var(--first-color);
+    margin-bottom: var(--mb-1);
+}
+
+.home-subtitle {
+    font-size: var(--h1-font-size);
+    color: var(--title-color);
+    margin-bottom: var(--mb-4);
+}
+.home-img {
+    width: 300px;
+    justify-self: center;
+    border-radius: 50%;
+    height: 300px;
+}
+
+/* ================ button ================ */
+.button {
+    display: inline-block;
+    background-color: var(--first-color);
+    color: #fff;
+    padding: .75rem 1rem;
+    border-radius: .5rem;
+    transition: .3s;
+}
+
+.button:hover {
+    background-color: var(--first-color-alt);
+}
