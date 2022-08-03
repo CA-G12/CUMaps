@@ -19,7 +19,7 @@ function linkAction () {
     // When we click on each nav-link, we remove the show-menu class
     navMenu.classList.remove('show-menu')
 }
-navLink.forEach (n => n.addEventListener ('click', linkAction))
+
 
 /*==================== CHANGE BACKGROUND HEADER ====================*/ 
 function scrollHeader(){
@@ -28,3 +28,10 @@ function scrollHeader(){
     if(this.scrollY >= 200) nav.classList.add('scroll-header'); else nav.classList.remove('scroll-header')
 }
 window.addEventListener('scroll', scrollHeader)
+
+// /*=========create for loop logic ===============*/ 
+// const forLoop=(data)=>{
+//     data.forEach(ele=>{
+//         createCard(ele)
+//     })
+// }

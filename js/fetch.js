@@ -15,4 +15,4 @@ const fetch=(url,cb)=>{
     xhr.send()
 }
 
-fetch(url,dat)
+// fetch(url,dat)
