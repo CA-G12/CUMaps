@@ -72,7 +72,7 @@ const createCard = (data) => {
     cardFooter.appendChild(title);
     const anchor = document.createElement("a");
     anchor.className = "button card-button";
-    anchor.href = "./university/index.html";
+    anchor.href = "../uneversty/index.html";
     cardFooter.appendChild(anchor);
 
     anchor.addEventListener("click", (e) => {
