@@ -33,6 +33,6 @@ window.addEventListener('scroll', scrollHeader)
 const searchUniversty=(data , name)=>{
     return data.filter(ele=>{
         console.log(ele,79856444444444444444444)
-        return ele.name ==name
+        return ele.name.includes(name)  
     })
 }

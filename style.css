@@ -191,13 +191,13 @@ img{
     margin-right: 8px
 }
 
-.search-box:hover > .search-text {
-    width: 150px;
-    padding: 0 6px;
-}
-
-.search-box:hover > .search-btn {
-    background: #393939;
+.search-box-un {
+    background: var(--body-color);
+    box-shadow: 0 0px 4px rgb(0 0 0 / 10%);
+    height: 40px;
+    border-radius: 40px;
+    display: flex;
+    margin-right: 8px
 }
 .search-btn {
     color: var(--body-color);
@@ -221,6 +221,33 @@ img{
     transition: .4s;
     line-height: 40px;
     width: 0;
+}
+
+.search-text-un {
+    border: none;
+    background: none;
+    outline: none;
+    padding: 0;
+    color: #393939;
+    font-size: 16px;
+    transition: .4s;
+    line-height: 40px;
+    width: 0;
+}
+.search-box:hover> .search-text {
+    width: 150px;
+    padding: 0 6px;
+}
+.search-box-un:hover> .search-text-un {
+    width: 150px;
+    padding: 0 6px;
+}
+.search-box:hover > .search-btn {
+    background: #393939;
+}
+
+.search-box-un:hover > .search-btn {
+    background: #393939;
 }
 
 /* Change background header */
@@ -279,7 +306,7 @@ img{
     width: calc(100% - 2rem);
     margin-left: var(--mb-2);
     margin-right: var(--mb-2);
-    
+    margin-top: 32px;
 }
 .card-countries, .card-university{
     display: grid;
@@ -357,6 +384,7 @@ img{
     height: 100%;
     background: rgb(0 0 0 / 58%);
     border-radius: 0.5rem;
+    position: relative;
 }
 .name-university {
     color: #fff;
@@ -382,4 +410,79 @@ p.country-name span{
     font-size: var(--small-font-size);
     color: var(--text-color-light);
     margin-top: 3.5rem;
+}
+
+/*========== MEDIA QUERIES ==========*/
+@media screen and (max-width: 576px) {
+    .home {
+        margin-top: 100px;
+    }
+}
+@media screen and (min-width: 576px){
+    .home-container {
+        grid-template-columns: repeat(2,1fr);
+        align-items: center;
+    }
+}
+
+@media screen and (min-width: 768px) {
+    body{
+        margin: 0;
+    }
+    
+    .section{
+        padding-top: 8rem;
+    }
+    
+    .nav{
+        height: calc(var(--header-height) + 1.5rem);
+        margin: auto;
+    }
+    .nav-menu {
+        background: none;
+        top: 100%;
+        box-shadow: none;
+        position: unset;
+    }
+    .nav-list{
+        display: flex;
+        justify-content: flex-end;
+        padding-right: 24px;
+    }
+    .nav-item{
+        margin-left: var(--mb-5);
+        margin-bottom: 0;
+    }
+    .nav-toggle{
+        display: none;
+    }
+
+    
+    .home-container {
+        height: 100vh;
+        justify-items: center;
+        padding: 0 48px;
+        margin: auto;
+    }
+    .card-countries, .card-university {
+        margin-top: var(--mb-6);
+        grid-template-columns: repeat(3, 210px);
+        column-gap: 4rem;
+    }
+    section.countries {
+        margin: auto;
+    }
+
+}
+
+@media screen and (min-width: 960px) {
+    .home__img{
+        width: 500px;
+    }
+}
+
+@media screen and (min-height: 721px) {
+    .home__container {
+        height: 640px;
+    }
 }
