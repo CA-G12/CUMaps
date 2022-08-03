@@ -6,8 +6,6 @@ const fetch=(url,cb)=>{
             if(xhr.status==200){
                 const data=JSON.parse(xhr.responseText)
                 cb(data)    
-            }else{
-                console.log('error')
             }
         }
     }

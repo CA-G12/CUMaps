@@ -32,7 +32,8 @@ window.addEventListener('scroll', scrollHeader)
 // /*=========create for loop logic ===============*/ 
 const searchUniversty=(data , name)=>{
     return data.filter(ele=>{
-        console.log(ele,79856444444444444444444)
+        
         return ele.name.includes(name)  
     })
 }
+module.exports = searchUniversty
