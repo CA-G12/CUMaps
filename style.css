@@ -369,3 +369,17 @@ p.country-name span{
     color: #5bc19a;
     padding-left: 8px;
 }
+
+/* start footer  */
+.footer {
+    max-width: 960px;
+    width: calc(100% - 2rem);
+    margin-left: var(--mb-2);
+    margin-right: var(--mb-2);
+}
+.footer .footer-copy {
+    text-align: center;
+    font-size: var(--small-font-size);
+    color: var(--text-color-light);
+    margin-top: 3.5rem;
+}
