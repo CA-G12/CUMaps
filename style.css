@@ -238,6 +238,7 @@ img{
     gap: 1.5rem;
     height: calc(100vh - var(--header-height));
     align-content: center;
+    margin-top: 32px;
 }
 
 .home-title {
@@ -272,24 +273,76 @@ img{
     background-color: var(--first-color-alt);
 }
 
-/* ======== cardSection =========== */
-.card-section{
-    width: 100%;
+/* ================ countries section ================ */
+.countries {
+    max-width: 960px;
+    width: calc(100% - 2rem);
+    margin-left: var(--mb-2);
+    margin-right: var(--mb-2);
+    
+}
+.card-countries {
+    display: grid;
+    gap: 1.5rem;
+    grid-template-columns: repeat(1, 1fr);
+    justify-content: center;
+    
+}
+
+.card-content{
+    position: relative;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-    /* min-height: 100vh;
-    height: 100vh; */
+    background-color: var(--container-color);
+    border-radius: .5rem;
+    box-shadow: 0 2px 4px rgba(3,74,40,.15);
 }
-.card{
-    height: 15rem;
+
+.div-img {
+    position: relative;
+    overflow: hidden;
+    height: 225px;
+    border-radius: 0.5rem 0.5rem 0 0;
+    border: 4px solid var(--first-color);
+}
+.card-img{
     width: 100%;
-    margin-top:2rem ;
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
+    align-self: center;
+    margin-bottom: var(--mb-2);
+    transition: transform 2s;
+    border-radius: 0.5rem 0.5rem 0 0;
 }
-.card h2{
-    margin-top: 8rem;
-    color: black;
+.card-content:hover .card-img {
+    transform: scale(1.2);
+}
+
+.details {
+    padding: 0.75rem;
+    font-size: var(--small-font-size);
+}
+
+.button {
+    display: inline-block;
+    background-color: var(--first-color);
+    color: #FFF;
+    padding: 0.75rem 1rem;
+    border-radius: 0.5rem;
+    transition: .3s;
+}
+
+.card-name{
+    font-size: var(--normal-font-size);
+}
+
+.card-button{
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    display: flex;
+    padding: .625rem .813rem;
+    border-radius: .5rem 0 .5rem 0;
+}
+
+.card-button i {
+    font-size: 18px;
 }
