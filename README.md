@@ -13,12 +13,6 @@
 
 ![](https://i.imgur.com/FVAWk8n.png)
 
-
-### **design** <span id='design'></span>
-
-<img src="https://i.postimg.cc/d0tjt0LJ/figma.png"  width=800>
-</img>
-
 ### **Description** <span id='desc'></span>
 
 UCMaps is a website to help students find universities worldwide with some general information about the country they search for. It provides the students with a direct link to every university website.
