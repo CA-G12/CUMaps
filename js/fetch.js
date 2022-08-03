@@ -1,5 +1,5 @@
 const xhr =new XMLHttpRequest()
-
+console.log("first")
 const fetch=(url,cb)=>{
     xhr.onreadystatechange=()=>{
         if(xhr.readyState==4){
@@ -14,5 +14,3 @@ const fetch=(url,cb)=>{
     xhr.open('GEt',url)
     xhr.send()
 }
-
-// fetch(url,dat)
