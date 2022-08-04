@@ -72,7 +72,7 @@ const createCard = (data) => {
     cardFooter.appendChild(title);
     const anchor = document.createElement("a");
     anchor.className = "button card-button";
-    anchor.href = "../uneversty/index.html";
+    anchor.href = "./uneversty/index.html";
     cardFooter.appendChild(anchor);
 
     anchor.addEventListener("click", (e) => {
@@ -86,7 +86,7 @@ const createCard = (data) => {
 form?.addEventListener("submit", (e) => {
   e.preventDefault();
   const input = document.querySelector(".search-text");
-  location.href = `./university/index.html?q=${input.value}`;
+  location.href = `../uneversty/index.html?q=${input.value}`;
   const querye = window.location.search;
   const slic = querye.slice(3);
   fetch(
