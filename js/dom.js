@@ -1,109 +1,146 @@
 // declarations the vars
-const navLink = document.querySelectorAll(".nav-link");
-const navMenu = document.getElementById("nav-menu");
-navLink.forEach((n) => n.addEventListener("click", linkAction));
 const cardSection = document.querySelector(".card-countries");
 const cardUniversity = document.querySelector(".card-university");
-const form = document.querySelector(".search-box");
-const unForm=document.querySelector('.search-box-un')
-const querye = window.location.search;
-const slic = querye.slice(3);
-const inuDom = (data) => {
-// let info=data
-unForm.addEventListener('submit',(e)=>{
-    e.preventDefault()
-    const input=document.querySelector('.search-text-un')
-    cardUniversity.textContent=''
-    let info=searchUniversty(data,input.value)
-    inuDom(info)
-})
-data.forEach((ele) => {
-    const cardContent = document.createElement("div");
-    cardContent.className = "card-content";
-    cardUniversity.appendChild(cardContent);
-    const overlay = document.createElement("div");
-    overlay.className = "overlay";
-    cardContent.appendChild(overlay);
+const searchBar = document.querySelector('#searchBar');
+
+let dataResult = [];
+const query = window.location.search;
+const keyword = query.slice(3);
+
+// fetch on data country in rest api 
+const getCountries = () => {
+  let url = `https://restcountries.com/v3.1/all`;
+  fetch(url, (error, result)=> {
+    if(error) {
+      error
+      return;
+    }
+    dataResult = result
+    handleCountryData(dataResult)
+    return;
+  })
+}
+
+// ! handle University data using innerHTML
+const handleCountryData = (handle) => {
+  const htmlString = handle
+      .map((ele) => {
+          return `
+          <div class="card-content">
+            <div class="div-img">
+              <img class="card-img" src=${ele.flags.png} alt="logo"></img>
+            </div>
+            <div class="details">
+              <h2 class="card-name">${ele.name.common}</h2>
+              <a href='./university/index.html?q=${ele.name.common}' class="button card-button">
+                <i class="ri-arrow-right-line"></i>
+              </a>
+            </div>
+
+          </div>
+      `;
+      })
+      .join('');
+      cardSection.innerHTML = htmlString;
+};
+
+// fetch on data Universities related the country in rest api 
+const getUniversities = () => {
+  let url = `https://api.codetabs.com/v1/proxy/?quest=http://universities.hipolabs.com/search?country=${keyword}`;
+  fetch(url, (error, result)=> {
+    if(error) {
+      error
+      return;
+    }
+    handleUniversityData(result)
+    return;
+  })
+}
+
+// ! handle University data using DOM
+const handleUniversityData = (handle) => {
+    handle.forEach((ele) => {
+      const cardContent = document.createElement("div");
+      const overlay = document.createElement("div");
     const details = document.createElement("div");
-    details.className = "details";
-    overlay.appendChild(details);
-    const name = document.createElement("h1");
-    name.className = "name-university";
-    name.textContent = ele.name;
-    details.appendChild(name);
+    const name = document.createElement("h2");
     const countryName = document.createElement("p");
-    countryName.className = "country-name";
-    countryName.textContent = ele.country;
-    details.appendChild(countryName);
-
     const alpha = document.createElement("span");
-    alpha.className = "alpha-word";
-    alpha.textContent = ele.alpha_two_code;
-    countryName.appendChild(alpha);
-
     const webLink = document.createElement("a");
-    webLink.className = "webLink button";
-    webLink.href = `${ele.web_pages[0]}`;
-    overlay.appendChild(webLink);
-
     const arrowIcon = document.createElement("i");
+    
+    cardContent.className = "card-content";
+    overlay.className = "overlay";
+    details.className = "details";
+    name.className = "name-university";
+    countryName.className = "country-name";
+    alpha.className = "alpha-word";
+    webLink.className = "webLink button";
     arrowIcon.className = "ri-arrow-right-line";
+    
+    name.textContent = ele.name;
+    countryName.textContent = ele.country;
+    alpha.textContent = ele.alpha_two_code;
+    webLink.href = `${ele.web_pages[0]}`;
+
+    cardUniversity.appendChild(cardContent);
+    cardContent.appendChild(overlay);
+    overlay.appendChild(details);
+    details.appendChild(name);
+    details.appendChild(countryName);
+    countryName.appendChild(alpha);
+    overlay.appendChild(webLink);
     webLink.appendChild(arrowIcon);
   });
-};
-const createCard = (data) => {
-  data.forEach((ele) => {
-    const card = document.createElement("div");
-    card.className = "card-content";
-    cardSection?.appendChild(card);
-    const imagDiv = document.createElement("div");
-    imagDiv.className = "div-img";
-    card.appendChild(imagDiv);
-    const imag = document.createElement("img");
-    imag.className = "card-img";
-    imag.src = ele.coatOfArms.png;
-    imagDiv.appendChild(imag);
-    const cardFooter = document.createElement("div");
-    cardFooter.className = "details";
-    card.appendChild(cardFooter);
-    const title = document.createElement("h2");
-    title.className = "card-name";
-    title.textContent = ele.name.common;
-    cardFooter.appendChild(title);
-    const anchor = document.createElement("a");
-    anchor.className = "button card-button";
-    anchor.href = "./uneversty/index.html";
-    cardFooter.appendChild(anchor);
-
-    anchor.addEventListener("click", (e) => {
-      anchor.href += `?q=${title.textContent}`;
-    });
-    const i = document.createElement("i");
-    i.className = "ri-arrow-right-line";
-    anchor.appendChild(i);
-  });
-};
-form?.addEventListener("submit", (e) => {
-  e.preventDefault();
-  const input = document.querySelector(".search-text");
-  location.href = `./uneversty/index.html?q=${input.value}`;
-  const querye = window.location.search;
-  const slic = querye.slice(3);
-  fetch(
-    `https://api.codetabs.com/v1/proxy/?quest=http://universities.hipolabs.com/search?country=${slic}`,
-    inuDom
-  );
-  input.value=''
-});
-const getData = (q) => {
-  fetch(
-    `https://api.codetabs.com/v1/proxy/?quest=http://universities.hipolabs.com/search?country=${q}`,
-    inuDom
-  );
-};
-
-if (slic) {
-  getData(slic);
-} else {
-  fetch("https://restcountries.com/v3.1/all", createCard);
 }
+
+// ! search Country
+searchBar.addEventListener('keyup', (e)=> {
+  const searchString = e.target.value;
+  const filterCharacter = dataResult.filter(character => {
+      return character.name.common.includes(searchString);
+  })
+  handleCountryData(filterCharacter)
+})
+
+getCountries();
+getUniversities();
+
+
+// ! Using DOM
+// const handleCountryData = (handle) => {
+//   handle.map((ele) => {
+//     const card = document.createElement("div");
+//     const imagDiv = document.createElement("div");
+//     const imag = document.createElement("img");
+//     const cardFooter = document.createElement("div");
+//     const title = document.createElement("h2");
+//     const anchor = document.createElement("a");
+//     const i = document.createElement("i");
+    
+//     card.className = "card-content";
+//     imagDiv.className = "div-img";
+//     imag.className = "card-img";
+//     cardFooter.className = "details";
+//     title.className = "card-name";
+//     anchor.className = "button card-button";
+//     i.className = "ri-arrow-right-line";
+    
+//     imag.src = ele.flags.png;
+//     imag.alt = 'logo';
+//     title.textContent = ele.name.common;
+
+//     cardSection?.appendChild(card);
+//     card?.appendChild(imagDiv);
+//     imagDiv?.appendChild(imag);
+//     card?.appendChild(cardFooter);
+//     cardFooter?.appendChild(title);
+//     cardFooter?.appendChild(anchor);
+//     anchor?.appendChild(i);
+
+//     anchor.addEventListener("click", (e) => {
+//       anchor.href = `./university/index.html`;
+//       anchor.href += `?q=${title.textContent}`;
+//     });
+//   })
+// }

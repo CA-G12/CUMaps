@@ -15,11 +15,13 @@ const showMenu = (toggleId, navId) => {
 showMenu('nav-toggle','nav-menu')
 
 /* ================ REMOVE MENU MOBILE ================ */
+const navLink = document.querySelectorAll(".nav-link");
 function linkAction () {
+    const navMenu = document.getElementById("nav-menu");
     // When we click on each nav-link, we remove the show-menu class
     navMenu.classList.remove('show-menu')
 }
-
+navLink.forEach((link) => link.addEventListener("click", linkAction));
 
 /*==================== CHANGE BACKGROUND HEADER ====================*/ 
 function scrollHeader(){
@@ -28,12 +30,3 @@ function scrollHeader(){
     if(this.scrollY >= 200) nav.classList.add('scroll-header'); else nav.classList.remove('scroll-header')
 }
 window.addEventListener('scroll', scrollHeader)
-
-// /*=========create for loop logic ===============*/ 
-const searchUniversty=(data , name)=>{
-    return data.filter(ele=>{
-        
-        return ele.name.includes(name)  
-    })
-}
-module.exports = searchUniversty
